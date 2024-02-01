@@ -5,7 +5,7 @@ import { Toaster } from "@/components/ui/sonner";
 import Navbar from "./nav";
 import { cn } from "@/lib/utils";
 
-export const fontSans = FontSans({
+const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
 })
