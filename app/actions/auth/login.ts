@@ -4,6 +4,7 @@ import { ZodError } from "zod";
 import { loginSchema, parseLoginForm } from "./validation";
 import { loginRequest } from "./requests";
 import { cookies } from "next/headers";
+import { getMyInfo } from "@/requests/me";
 
 
 export type LoginForm = {
@@ -28,8 +29,20 @@ const login = async (
         const validation = loginSchema.parse(loginForm);
 
         const token = await loginRequest(validation);
-
         cookies().set("token", token);
+
+        const me = await getMyInfo();
+
+        if (!me) {
+            return {
+                status: "error",
+                errors: "Kunne ikke hente brukerinformasjon",
+                form: loginForm
+            };
+        }
+
+        cookies().set("name", `${me.first_name} ${me.last_name}`);
+        cookies().set("image", me.image);
 
         return {
             status: "success",
