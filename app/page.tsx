@@ -12,7 +12,7 @@ const Home = async () => {
 
   if (!myPermissions) return (
     <div>
-      Du har ikke tilgang til dette panelet.
+      Du har ingen rettigheter.
     </div>
   )
   
@@ -28,56 +28,56 @@ const Home = async () => {
       app: PermissionGroup.PAYMENT,
       icon: <CreditCardIcon className={iconStyle} />,
       title: 'Betalinger',
-      description: 'Se, oppdater og slett betalinger.',
+      description: 'Administrer betalinger.',
       href: '/payment'
     },
     {
       app: PermissionGroup.EVENT,
       icon: <CalendarClockIcon className={iconStyle} />,
       title: 'Arrangementer',
-      description: 'Se, oppdater og slett arrangementer.',
+      description: 'Administrer arrangementer.',
       href: '/event'
     },
     {
       app: PermissionGroup.NEWS,
       icon: <CreditCardIcon className={iconStyle} />,
       title: 'Nyheter',
-      description: 'Se, oppdater og slett nyheter.',
+      description: 'Administrer nyheter.',
       href: '/news'
     },
     {
       app: PermissionGroup.JOBPOST,
       icon: <NewspaperIcon className={iconStyle} />,
       title: 'Jobbannonser',
-      description: 'Se, oppdater og slett jobbannonser.',
+      description: 'Administrer jobbannonser.',
       href: '/jobpost'
     },
     {
       app: PermissionGroup.GROUP,
       icon: <UsersIcon className={iconStyle} />,
       title: 'Grupper',
-      description: 'Se, oppdater og slett grupper.',
+      description: 'Administrer grupper.',
       href: '/group'
     },
     {
       app: PermissionGroup.BANNER,
       icon: <FlagIcon className={iconStyle} />,
       title: 'Bannere',
-      description: 'Se, oppdater og slett bannere.',
+      description: 'Administrer bannere.',
       href: '/banner'
     },
     {
       app: PermissionGroup.STRIKE,
       icon: <GripHorizontalIcon className={iconStyle} />,
       title: 'Prikker',
-      description: 'Se, oppdater og slett prikker.',
+      description: 'Administrer prikker.',
       href: '/prikker'
     },
     {
       app: PermissionGroup.USER,
       icon: <UserIcon className={iconStyle} />,
       title: 'Brukere',
-      description: 'Se, oppdater og slett brukere.',
+      description: 'Administrer brukere.',
       href: '/user'
     }
   ];
@@ -95,8 +95,10 @@ const Home = async () => {
           </p>
         </div>
         <div className="mt-6 mx-auto">
-          <Button>
-            Mine rettigheter
+          <Button asChild>
+            <Link href="/me">
+              Mine rettigheter
+            </Link>
           </Button>
         </div>
       </div>
